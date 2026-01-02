@@ -9,7 +9,7 @@ deepseek_model = init_chat_model(
     api_key = settings.api_key,
     base_url = settings.base_url,
     temperature = 1.0,
-    max_tokens = 50,
+    max_tokens = 100,
 )
 
 tongyi_model = init_chat_model(
@@ -31,8 +31,8 @@ openai_model = init_chat_model(
 )
 
 messages = [
-    SystemMessage(content="你是一个有趣的助手,擅长用比喻来帮助用户理解概念"),
-    HumanMessage(content="什么是手机?")
+    SystemMessage(content="你是一个有趣的诗人"),
+    HumanMessage(content="写一首关于秋天的诗")
 ]
 
 
@@ -52,7 +52,9 @@ messages = [
 # messages.append({"role":"assistant","content":response1.content})
 # print("********打印消息列表*********")
 # print(messages)
-
-resp = openai_model.invoke(messages)
-print(resp.additional_kwargs.keys())
-print(resp.content)
+try:
+    resp = deepseek_model.stream(messages)
+    for chunk in resp:
+        print(chunk.content,end="",flush=True)
+except Exception as e:
+    print(f"未知错误:{e}")
