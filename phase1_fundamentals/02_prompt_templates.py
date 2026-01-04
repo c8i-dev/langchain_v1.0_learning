@@ -1,4 +1,4 @@
-from utils.models import deepseek_model,openai_model,tongyi_model
+from utils.models import model_deepseek,model_openai,model_tongyi
 from langchain_core.prompts import (
     PromptTemplate,
     ChatPromptTemplate,
@@ -35,7 +35,7 @@ from langchain.messages import HumanMessage,AIMessage,SystemMessage
 #                 {"role":"system","content":prompt},
 #                 {"role":"user","content":user_content}
 #             ]
-#             resp = deepseek_model.invoke(messages)
+#             resp = model_deepseek.invoke(messages)
 #             print("==打印输出==")
 #             print(resp.content)
 #         else:
@@ -55,7 +55,7 @@ from langchain.messages import HumanMessage,AIMessage,SystemMessage
 # print(message,type(message))
 
 
-# resp = deepseek_model.invoke(message)
+# resp = model_deepseek.invoke(message)
 # print(resp.content)
 
 
@@ -105,7 +105,7 @@ while True:
                 history=chat_messages,question=user_input
             )
             print(messages,type(messages))
-            resp = deepseek_model.invoke(messages)
+            resp = model_deepseek.invoke(messages)
             print("*"*20)
             print(f"AI:{resp.content}")
             messages.append(resp)
@@ -116,5 +116,3 @@ while True:
             #     print(message.content)
     except Exception as e:
         print(f"未知错误:{e}")
-
-

@@ -3,7 +3,7 @@ from langchain.chat_models import init_chat_model
 from langchain_core.messages import HumanMessage,AIMessage,SystemMessage
 
 
-deepseek_model = init_chat_model(
+model_deepseek = init_chat_model(
     model = settings.model,
     model_provider = settings.model_provider,
     api_key = settings.api_key,
@@ -12,7 +12,7 @@ deepseek_model = init_chat_model(
     max_tokens = 100,
 )
 
-tongyi_model = init_chat_model(
+model_tongyi = init_chat_model(
     model = settings.tongyi_model,
     model_provider = settings.tongyi_model_provider,
     api_key = settings.tongyi_api_key,
@@ -21,7 +21,7 @@ tongyi_model = init_chat_model(
     max_tokens = 1000,
 )
 
-openai_model = init_chat_model(
+model_openai = init_chat_model(
     model = settings.opneai_model,
     model_provider = settings.opneai_model_provider,
     api_key = settings.opneai_api_key,
