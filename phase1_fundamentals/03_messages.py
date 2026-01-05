@@ -29,12 +29,14 @@ conversations = [
 
 ##### 对话历史优化，避免太长
 
-def keep_recent_messages(messages, max_pairs):
+def keep_recent_messages(messages: list[dict], max_pairs: int) -> list[dict]:
     """保留最近的N轮对话
 
     Args:
-        messages (list): 消息列表
+        messages (list[dict]): 消息列表
         max_pairs (int): 保留的对话轮数，一组user和一组assistant是一轮对话
+    Return:
+        list[dict]:只保留指定对话轮数的的消息列表
     """
 
     # 分离系统提示词
@@ -56,7 +58,7 @@ while True:
         print(f"***********optimized_conversation**********")
         for con in optimized_conversation:
             print(con)
-            
+
         try:
             resp = model_deepseek.invoke(optimized_conversation)
             print(f"AI:{resp.content}")
