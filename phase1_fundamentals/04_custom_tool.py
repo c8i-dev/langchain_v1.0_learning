@@ -1,7 +1,6 @@
 from utils.models import *
 from langchain_core.tools import tool
 from datetime import datetime
-from typing import Optional
 
 
 @tool
@@ -67,7 +66,7 @@ def get_weather(city: str) -> str:
 
 
 @tool
-def web_search(query: str, num_results: Optional[int] = 3) -> str:
+def web_search(query: str, num_results: int | None = 3) -> str:
     """在网上搜索信息
 
     Args:
